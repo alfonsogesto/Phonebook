@@ -1,12 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\PII_WhatsAppApiUCU\src\Library\Library.csproj" />
+<<<<<<< HEAD
     <ProjectReference Include="..\..\..\PII_TwitterApi\src\Library\Library.csproj" />
 
+=======
+    <ProjectReference Include="..\..\..\PII_Twitter\src\Library\Library.csproj" />
+>>>>>>> d6ba79c13461eff69f2a123cf21aabaeafa62a9c
   </ItemGroup>
 </Project>
