@@ -7,17 +7,18 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            // Crear el contacto dueño
+            Contact owner = new Contact("Juan Carlos");
+            Phonebook phonebook = new Phonebook(owner);
 
-            // Crear la lista de contactos
+            Contact receptor =  new Contact("Laura");
+            phonebook.AddContact(receptor);
 
-            // Agregar contactos a la lista
-
-            // Enviar un correo a algunos contactos
-
+            
+            
+            
             // Enviar un WhatsApp a algunos contactos
 
-            // Enviar un SMS a algunos contactos
+            
         }
     }
 }

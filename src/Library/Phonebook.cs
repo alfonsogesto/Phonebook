@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using WhatsAppApiUCU;
+using TwitterUCU;
 
 namespace Library
 {
@@ -30,6 +32,28 @@ namespace Library
             }
 
             return result;
+        }
+
+        public void AddContact(Contact contact)
+        {
+            this.persons.Add(contact);
+        }
+
+        public void RemoveContact(Contact contact)
+        {
+            this.persons.Remove(contact);
+        }
+
+        public void SendMessage(string[] names,IMessageChannel channel, string text)
+        {
+            List<Contact> sendmessage = new List<Contact>();
+
+            foreach(Contact contact in sendmessage)
+            {
+                Message message = channel.sendmessage(this.Owner, contact);
+                message.Text = text;
+                channel.Send(message);
+            }
         }
     }
 }
