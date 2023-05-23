@@ -1,21 +1,33 @@
+using System;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Nito.AsyncEx;
 using System.Collections.Generic;
 using WhatsAppApiUCU;
 using TwitterUCU;
 
 namespace Library
 {
-    public class Phonebook
+    public class PhoneBook
     {
+        public Contact Owner { get; }
         private List<Contact> persons;
-
-        public Phonebook(Contact owner)
+        public PhoneBook(Contact owner)
         {
             this.Owner = owner;
             this.persons = new List<Contact>();
         }
-
-        public Contact Owner { get; }
-
+        public void AddContact(Contact contact)
+        {
+            this.persons.Add(contact);
+        }
+        public void RemoveContact(Contact contact)
+        {
+            this.persons.Remove(contact);
+        }
         public List<Contact> Search(string[] names)
         {
             List<Contact> result = new List<Contact>();
@@ -30,30 +42,18 @@ namespace Library
                     }
                 }
             }
-
             return result;
         }
-
-        public void AddContact(Contact contact)
+        public void SendMessage(string message, string contactName, IMessageChannel channel)
         {
-            this.persons.Add(contact);
-        }
+            string[] to = {contactName};
+            List<Contact> result = this.Search(to);
+            Contact recipient = result[0];
 
-        public void RemoveContact(Contact contact)
-        {
-            this.persons.Remove(contact);
-        }
+            Message text = new Message(this.Owner, recipient);
+            text.Text = message;
 
-        public void SendMessage(string[] names,IMessageChannel channel, string text)
-        {
-            List<Contact> sendmessage = new List<Contact>();
-
-            foreach(Contact contact in sendmessage)
-            {
-                Message message = channel.sendmessage(this.Owner, contact);
-                message.Text = text;
-                channel.Send(message);
-            }
+            channel.Send(text);
         }
     }
 }
