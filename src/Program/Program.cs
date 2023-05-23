@@ -45,7 +45,7 @@ namespace Program
             
             WhatsAppMessage wsp = new WhatsAppMessage();
             TwitterDM tw = new TwitterDM();
-            phoneBook.SendMessage("probandooo", "Nacho", tw);
+            phoneBook.SendMessage("probandooo", "AgusB", tw);
         }
     }
 }
