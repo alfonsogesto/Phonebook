@@ -1,4 +1,11 @@
 ﻿using System;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Nito.AsyncEx;
+using WhatsAppApiUCU;
 using Library;
 
 namespace Program
@@ -7,17 +14,38 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            // Crear el contacto dueño
+            Contact owner = new Contact("Juan Carlos");
+            PhoneBook phoneBook = new PhoneBook(owner);
 
-            // Crear la lista de contactos
+            Contact agusB = new Contact("AgusB");
+            Contact agusK = new Contact("AgusK");
+            Contact nacho = new Contact("Nacho");
+            Contact alfoG = new Contact("AlfoG");
+            Contact andyC = new Contact("AndyC");
 
-            // Agregar contactos a la lista
+            agusB.Phone = "+59898348813";
+            agusB.TwitterID = "1042525944";
 
-            // Enviar un correo a algunos contactos
+            agusK.Phone = "+59893350714";
 
+            nacho.Phone = "+59897992196";
+            nacho.TwitterID = "1257805315480997888";
+
+            alfoG.Phone = "+59891400647";
+
+            andyC.Phone = "+59891774460";
+
+            phoneBook.AddContact(agusB);
+            phoneBook.AddContact(agusK);
+            phoneBook.AddContact(nacho);
+            phoneBook.AddContact(alfoG);
+            phoneBook.AddContact(andyC);           
+            
             // Enviar un WhatsApp a algunos contactos
-
-            // Enviar un SMS a algunos contactos
+            
+            WhatsAppMessage wsp = new WhatsAppMessage();
+            TwitterDM tw = new TwitterDM();
+            phoneBook.SendMessage("probandooo", "Nacho", tw);
         }
     }
 }
