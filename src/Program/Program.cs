@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Twilio;
-using Twilio.Rest.Api.V2010.Account;
-using Nito.AsyncEx;
 using WhatsAppApiUCU;
 using Library;
 
