@@ -8,14 +8,13 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            Contact owner = new Contact("Juan Carlos");
-            PhoneBook phoneBook = new PhoneBook(owner);
+            PhoneBook phoneBook = new PhoneBook("Juan Carlos");
 
-            Contact agusB = new Contact("AgusB");
-            Contact agusK = new Contact("AgusK");
-            Contact nacho = new Contact("Nacho");
-            Contact alfoG = new Contact("AlfoG");
-            Contact andyC = new Contact("AndyC");
+            Contact agusB = phoneBook.AddContact("AgusB");
+            Contact agusK = phoneBook.AddContact("AgusK");
+            Contact nacho = phoneBook.AddContact("Nacho");
+            Contact alfoG = phoneBook.AddContact("AlfoG");
+            Contact andyC = phoneBook.AddContact("AndyC");
 
             agusB.Phone = "+59898348813";
             agusB.TwitterID = "1042525944";
@@ -27,13 +26,7 @@ namespace Program
 
             alfoG.Phone = "+59891400647";
 
-            andyC.Phone = "+59891774460";
-
-            phoneBook.AddContact(agusB);
-            phoneBook.AddContact(agusK);
-            phoneBook.AddContact(nacho);
-            phoneBook.AddContact(alfoG);
-            phoneBook.AddContact(andyC);           
+            andyC.Phone = "+59891774460";         
             
             // Enviar un WhatsApp a algunos contactos
             

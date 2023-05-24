@@ -9,14 +9,17 @@ namespace Library
     {
         public Contact Owner { get; }
         private List<Contact> persons;
-        public PhoneBook(Contact owner)
+        public PhoneBook(string name)
         {
+            Contact owner = new Contact(name);
             this.Owner = owner;
             this.persons = new List<Contact>();
         }
-        public void AddContact(Contact contact)
+        public Contact AddContact(string name)
         {
+            Contact contact = new Contact(name);
             this.persons.Add(contact);
+            return contact;
         }
         public void RemoveContact(Contact contact)
         {
@@ -40,13 +43,16 @@ namespace Library
         }
         public void SendMessage(string message, string contactName, IMessageChannel channel)
         {
+            // Defino destinatario
             string[] to = {contactName};
             List<Contact> result = this.Search(to);
             Contact recipient = result[0];
 
+            // Defino el mensaje a ser enviado
             Message text = new Message(this.Owner, recipient);
             text.Text = message;
 
+            // Envio el mensaje por el canal indicado
             channel.Send(text);
         }
     }
