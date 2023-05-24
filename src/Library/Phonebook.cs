@@ -17,6 +17,7 @@ namespace Library
         }
         public Contact AddContact(string name)
         {
+            // Aplicando el patron Creator, creo el nuevo objeto Contact dentro del metodo
             Contact contact = new Contact(name);
             this.persons.Add(contact);
             return contact;
